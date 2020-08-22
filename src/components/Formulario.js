@@ -1,5 +1,6 @@
 import React, {Fragment, useState} from 'react';
 import uuid from 'uuid/v4'
+import PropTypes from 'prop-types'
 
 import Error from './Error.js'
 
@@ -117,6 +118,10 @@ const Formulario = ( {crearTarea} ) => {
             </form>
         </Fragment>
      );
+}
+
+Formulario.propTypes = {
+    crearTarea: PropTypes.func.isRequired
 }
  
 export default Formulario;

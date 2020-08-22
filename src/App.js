@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Fragment } from 'react';
 import Formulario from './components/Formulario'
 import Tarea from './components/Tarea';
@@ -7,8 +7,26 @@ import Footer from './components/Footer';
 
 function App() {
 
+  // datos en el localstorage 
+  let datosIniciales = JSON.parse(localStorage.getItem('datos'))
+  // verificar que haigan datos en el localstorage
+  if(!datosIniciales) {
+    // si no hay datos
+    datosIniciales = []
+  }
+
   // arreglo de tareas
-  const [datos, guardarDatos] = useState([])
+  const [datos, guardarDatos] = useState(datosIniciales)
+
+  // useEffects
+  useEffect(() => {
+    // si hay datos iniciales
+    if(datosIniciales) {
+      localStorage.setItem('datos', JSON.stringify(datos))
+    }else {
+      localStorage.setItem('datos', JSON.stringify([]))
+    }
+  }, [datos, datosIniciales])
 
   // funcion crear tarea
   const crearTarea = dato => {
@@ -23,6 +41,9 @@ function App() {
     const nuevasTareas = datos.filter(dato => dato.id !== id)
     guardarDatos(nuevasTareas)
   }
+
+  // mensaje condicional
+  const tiulo = datos.length === 0 ? 'No hay Tareas, agrega una' : 'Administra tus tareas'
 
   return (
 
@@ -39,7 +60,7 @@ function App() {
                 />
               </div>
               <div className='col'>
-                <h2>Tareas para realizar</h2>
+                <h2> {tiulo} </h2>
                 {
                     datos.map(dato => (
                       <Tarea 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Fragment } from 'react';
+import PropTypes from 'prop-types'
 
 const Tarea = ( {dato, eliminarTarea} ) => {
     return ( 
@@ -21,6 +22,11 @@ const Tarea = ( {dato, eliminarTarea} ) => {
             </div>
         </Fragment>
      );
+}
+
+Tarea.propTypes = {
+    dato: PropTypes.object.isRequired,
+    eliminarTarea: PropTypes.func.isRequired
 }
  
 export default Tarea;
