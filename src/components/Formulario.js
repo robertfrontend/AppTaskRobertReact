@@ -4,18 +4,19 @@ import PropTypes from 'prop-types'
 
 import Error from './Error.js'
 
-const Formulario = ( {crearTarea} ) => {
+const Formulario = ( { crearTarea } ) => {
 
 
     // estado para el formulario
     const [dato, setDatos ] = useState({
         nombreTask: '',
         descTaask: '',
-        diaTask: ''
     })
 
     // estado error
     const [error, setError] = useState(false)
+    // estado para numerar las tareas
+    const [ count, setCount ] = useState(1)
 
     // cambiar estado
     const handleStado = (e) => {
@@ -39,13 +40,16 @@ const Formulario = ( {crearTarea} ) => {
             console.log('error');
             setError(true)
             return
-        } 
+        }
 
         // si no hay errores ejecuta todo esto
         setError(false)
         
         // asignar id
         dato.id = uuid()
+
+        setCount(count + 1)
+        dato.numeral = count
 
         // crear tarea
         crearTarea(dato)
@@ -56,6 +60,7 @@ const Formulario = ( {crearTarea} ) => {
             descTaask: '',
             diaTask: ''
         })
+
     }
 
 

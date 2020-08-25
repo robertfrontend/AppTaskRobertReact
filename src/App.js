@@ -3,6 +3,7 @@ import { Fragment } from 'react';
 import Formulario from './components/Formulario'
 import Tarea from './components/Tarea';
 import Footer from './components/Footer';
+import Header from './components/Header';
 
 
 function App() {
@@ -20,13 +21,16 @@ function App() {
 
   // useEffects
   useEffect(() => {
+
     // si hay datos iniciales
     if(datosIniciales) {
       localStorage.setItem('datos', JSON.stringify(datos))
     }else {
       localStorage.setItem('datos', JSON.stringify([]))
     }
+
   }, [datos, datosIniciales])
+
 
   // funcion crear tarea
   const crearTarea = dato => {
@@ -34,8 +38,8 @@ function App() {
         ...datos, 
         dato
       ])
-  }
 
+  }
   // eliminar cita 
   const eliminarTarea = (id) => {
     const nuevasTareas = datos.filter(dato => dato.id !== id)
@@ -45,12 +49,12 @@ function App() {
   // mensaje condicional
   const tiulo = datos.length === 0 ? 'No hay Tareas, agrega una' : 'Administra tus tareas'
 
+
   return (
 
     <Fragment>
+      <Header />
       <div className="app">
-        <div className='text-center'>
-          <h1>App Task Robert</h1>
           <div className="container">
             <div className='row row-cols-2 p-4'>
               <div className="col text-left ">
@@ -73,7 +77,6 @@ function App() {
               </div>
             </div>
           </div>
-        </div>
       </div>
       <Footer />
     </Fragment>

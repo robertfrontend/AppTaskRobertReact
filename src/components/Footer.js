@@ -4,8 +4,7 @@ const Footer = () => {
     return ( 
         <Fragment>
             <footer className='text-center'>
-                <p>Hecho con ❤ por <a href="https://robertrm0.github.io/" 
-                target='_blank'>
+                <p>Hecho con ❤ por <a href="https://robertrm0.github.io/">
                 Robertrm0</a> 
                 </p>
             </footer>
