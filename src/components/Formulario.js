@@ -11,12 +11,11 @@ const Formulario = ( { crearTarea } ) => {
     const [dato, setDatos ] = useState({
         nombreTask: '',
         descTaask: '',
+        diaTask: ''
     })
 
     // estado error
     const [error, setError] = useState(false)
-    // estado para numerar las tareas
-    const [ count, setCount ] = useState(1)
 
     // cambiar estado
     const handleStado = (e) => {
@@ -47,9 +46,6 @@ const Formulario = ( { crearTarea } ) => {
         
         // asignar id
         dato.id = uuid()
-
-        setCount(count + 1)
-        dato.numeral = count
 
         // crear tarea
         crearTarea(dato)
@@ -114,7 +110,7 @@ const Formulario = ( { crearTarea } ) => {
                     />
                 </div>
                 <div className='form-group'>
-                    <button className='btn btn-primary'
+                    <button className='btn btn-primary btn-block'
                         type='submit'
                     >
                         Crear Tarea

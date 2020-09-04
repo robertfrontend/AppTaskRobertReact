@@ -1,24 +1,27 @@
 import React from 'react';
 import { Fragment } from 'react';
 import PropTypes from 'prop-types'
+import Fecha from './Fecha';
 
 const Tarea = ( { dato, eliminarTarea } ) => {
+
+    const { diaTask, nombreTask, descTaask, id } = dato
+
     return ( 
         <Fragment>
             <div className='tarea'>
                 <div>
-                    <h2 className='numeral'>
-                         #<span>{dato.numeral} </span>  
-                    </h2>
+                    <h4>Nombre Tarea:</h4>
+                    <p>{nombreTask}</p>
+                    <h4>Descripcion:</h4>
+                    <p> {descTaask} </p>
                 </div>
-                <div>
-                    <p>Nombre tarea: <span> {dato.nombreTask} </span>  </p>
-                    <p>Descripcion: <span> {dato.descTaask} </span>  </p>
-                    <p>Cuando realizar: <span> {dato.diaTask} </span>  </p>
+                <div className="fecha">
+                    <Fecha />
                 </div>
                 <div>
                     <button className='btn btn-danger'
-                        onClick={ () => eliminarTarea(dato.id) }
+                        onClick={ () => eliminarTarea(id) }
                     >
                         Eliminar
                     </button>

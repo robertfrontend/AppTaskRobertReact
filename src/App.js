@@ -56,24 +56,26 @@ function App() {
       <Header />
       <div className="app">
           <div className="container">
-            <div className='row row-cols-2 p-4'>
-              <div className="col text-left ">
+            <div className='padre'>
+              <div className="divform">
                 <h2>Escribe una tarea</h2>
                 <Formulario 
                   crearTarea={crearTarea}
                 />
               </div>
-              <div className='col'>
+              <div className='col text-center' >
                 <h2> {tiulo} </h2>
-                {
-                    datos.map(dato => (
-                      <Tarea 
-                        key={dato.id}
-                        dato={dato}
-                        eliminarTarea={eliminarTarea}
-                      />
-                    ))
-                }
+                <div className="divDatos">
+                  {
+                      datos.map(dato => (
+                        <Tarea 
+                          key={dato.id}
+                          dato={dato}
+                          eliminarTarea={eliminarTarea}
+                        />
+                      ))
+                  }
+                </div>
               </div>
             </div>
           </div>
